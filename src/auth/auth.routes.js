@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { register, login} from "./auth.controller.js"
+import { register, login } from "./auth.controller.js"
 import { registerValidator, loginValidator, assignUserRole } from "../middlewares/user-validators.js"
 import { uploadProfilePicture } from "../middlewares/multer-uploads.js"
 

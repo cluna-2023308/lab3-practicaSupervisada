@@ -81,10 +81,27 @@ export const deleteUser = async (req, res) => {
 export const updatePassword = async (req, res) => {
     try{
         const { uid } = req.params
+        const { oldPassword } = req.body
         const { newPassword } = req.body
 
         const user = await User.findById(uid)
 
+        const matchOldAndOldPassword = await verify(user.password, oldPassword)
+
+        if(!matchOldAndOldPassword){
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña anterior se necesita para actualizarla"
+            })
+        }
+
+        if (!user.password !== oldPassword){
+            return res.status(400).json({
+                success: false,
+                message: "La contraseña ingresada no concuerda con la contraseña actual"
+            });
+        }
+        
         const matchOldAndNewPassword = await verify(user.password, newPassword)
 
         if(matchOldAndNewPassword){
@@ -168,35 +185,3 @@ export const updateUser = async (req, res) => {
         });
     }
 }
-
-const createAdmin = async () => {
-    try {
-  
-      const adminExists = await User.findOne({ role: "ADMIN_ROLE" });
-  
-      if (adminExists) {
-        console.log("El superadmin ya existe, no se puede crear otro");
-        return;
-      }
-  
-      const hashedPassword = await hash("Admin123-");
-  
-      const superAdmin = new User({
-        name: "Super",
-        surname: "Admin",
-        username: "SuperAdmin",
-        email: "superadmin@gmail.com",
-        username: "superadmin",
-        password: hashedPassword,
-        profilePicture: null,
-        role: "ADMIN_ROLE"
-      });
-  
-      await superAdmin.save();
-      console.log("Superadmin creado correctamente.");
-    } catch (error) {
-      console.error("Error al verificar o crear el superadmin:", error.message);
-    }
-  };
-  
-  export default createAdmin;
