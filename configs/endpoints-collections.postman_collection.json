@@ -76,6 +76,25 @@
 						"url": "http://127.0.0.1:3003/opinionSystem/v1/auth/login"
 					},
 					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"superadmin@gmail.com\",\n  \"password\": \"Admin123-\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/auth/login"
+					},
+					"response": []
 				}
 			]
 		},
@@ -184,6 +203,83 @@
 							]
 						},
 						"url": "http://127.0.0.1:3003/opinionSystem/v1/user/updateUser/679cedc00c50f098afb74105"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Agregar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Barca 5-2\",\n  \"description\": \"El equipo español FCB gano 5-2 al RMD\",\n  \"typeCategory\": \"SPORT_CATEGORY\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/category/createCategory"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/category/"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Categoria",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Messi se va del FCB\",\n  \"description\": \"El jugador argentino Leo Messi se va del FCB\",\n  \"typeCategory\": \"SPORT_CATEGORY\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/category/updateCategory/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						], 
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/category/deleteCategory/679cedc00c50f098afb74105"
 					},
 					"response": []
 				}
