@@ -8,7 +8,7 @@ import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
-import createAdmin from "../src/user/user.controller.js"
+import createAdminUser from "../src/auth/auth.controller.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
@@ -36,10 +36,10 @@ const conectarDB = async () => {
 export const initServer = () => {
     const app = express()
     try{
-        conectarDB()
+        createAdminUser()
+        middlewares(app)
         conectarDB()
         routes(app)
-        createAdmin()
         app.listen(process.env.PORT)
         console.log(`Server running on port ${process.env.PORT}`)
     }catch(err){

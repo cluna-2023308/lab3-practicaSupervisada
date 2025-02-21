@@ -64,3 +64,34 @@ export const login = async (req, res) => {
         })
     }
 }
+
+const createAdminUser = async () => {
+    try {
+  
+      const adminExists = await User.findOne({ role: "ADMIN_ROLE" });
+  
+      if (adminExists) {
+        console.log("El superadmin ya existe, no se puede crear otro");
+        return;
+      }
+  
+      const hashedPassword = await hash("Admin123-");
+  
+      const superAdmin = new User({
+        name: "Super",
+        surname: "Admin",
+        username: "SuperAdmin",
+        email: "superadmin@gmail.com",
+        password: hashedPassword,
+        profilePicture: null,
+        role: "ADMIN_ROLE"
+      });
+  
+      await superAdmin.save();
+      console.log("Superadmin creado correctamente.");
+    } catch (error) {
+      console.error("Error al verificar o crear el superadmin:", error.message);
+    }
+  };
+  
+  export default createAdminUser;
