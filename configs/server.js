@@ -12,12 +12,27 @@ import publicationRoutes from "../src/publication/publication.routes.js"
 import commentRoutes from "../src/comment/comment.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import createAdminUser from "../src/auth/auth.controller.js"
+import { swaggerDocs, swaggerUi } from "./swagger.js"
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
-    app.use(cors())
-    app.use(helmet())
+    app.use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization']
+    }));
+    app.use(helmet({
+        contentSecurityPolicy: {
+            directives: {
+                defaultSrc: ["'self'"],
+                scriptSrc: ["'self'", "'unsafe-inline'", `http://localhost:${process.env.PORT}`],
+                connectSrc: ["'self'", `http://localhost:${process.env.PORT}`],
+                imgSrc: ["'self'", "data:"],
+                styleSrc: ["'self'", "'unsafe-inline'"],
+            },
+        },
+    }));
     app.use(morgan("dev"))
     app.use(apiLimiter)
 }
@@ -28,6 +43,7 @@ const routes = (app) =>{
     app.use("/opinionSystem/v1/category", categoryRoutes)
     app.use("/opinionSystem/v1/publication", publicationRoutes)
     app.use("/opinionSystem/v1/comment", commentRoutes)
+    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 }
 
 
