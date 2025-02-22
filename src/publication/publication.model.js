@@ -21,10 +21,10 @@ const publicationSchema = Schema({
         ref: 'User',
         required: true,
     },
-    coments: [{ 
+    comments: [{ 
         type: Schema.Types.ObjectId, 
-        ref: "Coment"
-    }],
+        ref: "Comment"
+    }],    
     status:{
         type: Boolean,
         default: true

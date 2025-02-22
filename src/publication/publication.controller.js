@@ -114,7 +114,11 @@ export const getUserPublications = async (req, res) => {
 
         const publications = await Publication.find({ user: usuario })
             .populate("category", "name typeCategory")
-            .populate("user", "name email");
+            .populate("user", "name email")
+            .populate({
+                path: "comments",
+                populate: { path: "user", select: "name email" }
+            });
 
         if (!publications.length) {
             return res.status(404).json({ msg: "No hay publicaciones para este usuario" });

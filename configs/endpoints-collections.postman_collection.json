@@ -367,6 +367,74 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Agregar Comentario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Messi es el GOAT\",\n  \"publicationId\": \"243445gfr443\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/comment/createComment"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Cometario",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"text\": \"Neymar el principe que no quiso ser rey\",\n  \"publicationId\": \"243445gfr443\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/comment/updateComment/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Comentario",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						], 
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/comment/deleteComment/679cedc00c50f098afb74105"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
