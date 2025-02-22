@@ -8,6 +8,7 @@ import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js"
 import categoryRoutes from "../src/category/category.routes.js"
+import publicationRoutes from "../src/publication/publication.routes.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
 import createAdminUser from "../src/auth/auth.controller.js"
 
@@ -24,6 +25,7 @@ const routes = (app) =>{
     app.use("/opinionSystem/v1/auth", authRoutes)
     app.use("/opinionSystem/v1/user", userRoutes)
     app.use("/opinionSystem/v1/category", categoryRoutes)
+    app.use("/opinionSystem/v1/publication", publicationRoutes)
 }
 
 

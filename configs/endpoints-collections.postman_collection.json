@@ -284,6 +284,89 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Publication",
+			"item": [
+				{
+					"name": "Agregar Publicacion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Barca\",\n  \"text\": \"El mejor equipo del mundo es FCB\",\n  \"category\": \"243445gfr443\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/publication/createPublication"
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Publicacion",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"RMD\",\n  \"text\": \"El peor equipo del mundo es RMD\",\n  \"category\": \"243445gfr443\"\n}"
+						},
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/publication/updatePublication/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Publicacion",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						], 
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/publication/deletePublication/679cedc00c50f098afb74105"
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Publicacion de un Usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 845u80ghuofngvjfhewvibfjdshgjre.wsrerfsews",
+								"type": "text"
+							}
+						], 
+						"url": "http://127.0.0.1:3003/opinionSystem/v1/publication/getUserPublications"
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
